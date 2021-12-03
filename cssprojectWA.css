@@ -1,0 +1,120 @@
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
+}
+.background {
+  background-color: #ffffff;
+}
+.wrapper {
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  width: 50%;
+  border: 1px solid #4c738b;
+  border-radius: 30px;
+  background-color: #2794b8;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12);
+}
+.heading{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+#select-city {
+  background-color: #EBEBEB;
+  border: 1.5px solid #02588d;
+  border-radius: 30px;
+  padding: 1px 7px 2px 7px;
+  transition: all 200ms ease-in-out;   
+}
+.go, .currentlocation {
+  background-color: #02588d;
+  color: #EBEBEB;
+  border: 1.5px solid #02588d;
+  border-radius: 30px;
+  padding: 1px 7px 2px 7px;
+  transition: all 250ms ease-in-out;
+}
+.go:hover, .currentlocation:hover {
+  background-color: #EBEBEB;
+  color: #02588d;
+  cursor: pointer;
+}
+h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 32px;
+}
+h2 {
+  margin: 0;
+  font-size: 23px;
+}
+.infosactualday {
+  font-size: 15px;
+  line-height: 16px;
+  margin: 0;
+}
+.visibilitytemp {
+  display: inline-block;
+  margin-right: 10px;
+}
+.visibility {
+  font-size: 17px;
+}
+.temperature {
+  font-weight: bold;
+  font-size: 23px;
+}
+.fahrenheit, .celsius {
+  color: black;
+  text-decoration: none;
+}
+.fahrenheit:hover, .celsius:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+.digit {
+  position: relative;
+  top: -8px;
+  font-size: 12px;
+  font-weight: normal;
+}
+.sunicon {
+  display: inline-block;
+  width: 40%;
+}
+.daysafter {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 90%;
+}
+.nameday1, .nameday2, .nameday3, .nameday4, .nameday5 {
+  font-size: 19px;
+}
+.day1, .day2, .day3, .day4, .day5 {
+  padding-left: 20px;
+  background-color: #EBEBEB;
+  padding: 8px;
+  border: 1px dashed #02588d;
+  border-radius: 20px;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12);
+  transition: all 250ms ease-in-out;
+}
+.day1, .day2, .day3, .day4 {
+  margin-bottom: 10px; 
+}
+.day1:hover, .day2:hover, .day3:hover, .day4:hover, .day5:hover {
+  background-color: #267296;
+}
+.infosdaysafter {
+  font-size: 13px;
+  line-height: 16px;
+}
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: #02588d;
+}
