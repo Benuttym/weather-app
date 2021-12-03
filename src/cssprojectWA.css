@@ -113,8 +113,11 @@ h2 {
   font-size: 13px;
   line-height: 16px;
 }
-.footer {
+.footer, .footerLink {
   text-align: center;
   font-size: 11px;
   color: #02588d;
+}
+.footerLink:hover {
+  color: #d2dfe7;
 }
