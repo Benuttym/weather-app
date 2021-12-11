@@ -66,19 +66,26 @@ h2 {
   font-weight: bold;
   font-size: 23px;
 }
-.fahrenheit, .celsius {
-  color: black;
-  text-decoration: none;
-}
-.fahrenheit:hover, .celsius:hover {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-}
 .digit {
   position: relative;
   top: -8px;
   font-size: 12px;
   font-weight: normal;
+}
+.digit .inactive {
+  color: white;
+}
+.digit .inactive:hover {
+  color: white;
+  text-decoration: none;
+}
+.digit .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.digit .active:hover {
+  text-decoration: none;
 }
 .sunicon {
   display: inline-block;

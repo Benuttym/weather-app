@@ -26,22 +26,26 @@ function formatDate (timestamp) {
 
 function temperatureCelsius (event) {
   event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temperature");
-  let temperature = currentTemperature.innerHTML;
-  currentTemperature.innerHTML = `${Math.round((temperature - 32) * 5 / 9)}`;
-  let windUnit = document.querySelector("#units-wind");
-  windUnit.innerHTML = "km/h"
+  celsius.classList.add("active");
+  celsius.classList.remove("inactive");
+  fahrenheit.classList.remove("active");
+  fahrenheit.classList.add("inactive");
+  document.querySelector("#current-temperature").innerHTML = Math.round(celsiusTemperature);
+  document.querySelector("#current-wind").innerHTML = Math.round(windSpeed);
+  document.querySelector("#units-wind").innerHTML = `km/h`;
 };
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", temperatureCelsius);
 
 function temperatureFahrenheit (event) {
   event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temperature");
-  let temperature = currentTemperature.innerHTML;
-  currentTemperature.innerHTML = `${Math.round((temperature * 9) / 5) + 32}`;
-  let windUnit = document.querySelector("#units-wind");
-  windUnit.innerHTML = "mph"
+  celsius.classList.remove("active");
+  celsius.classList.add("inactive");
+  fahrenheit.classList.add("active");
+  fahrenheit.classList.remove("inactive");
+  document.querySelector("#current-temperature").innerHTML = Math.round((celsiusTemperature * 9) / 5) + 32;
+  document.querySelector("#current-wind").innerHTML = Math.round(windSpeed * 0.621371);
+  document.querySelector("#units-wind").innerHTML = `mph`;
 };
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", temperatureFahrenheit);
@@ -55,7 +59,17 @@ function displayCityTemp(response) {
   document.querySelector("#current-visibility").innerHTML = response.data.weather[0].main;
   document.querySelector("#current-day").innerHTML = formatDate(response.data.dt * 1000);
   document.querySelector("#current-weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  celsiusTemperature = response.data.main.temp;
+  windSpeed = response.data.wind.speed;
+  celsius.classList.add("active");
+  celsius.classList.remove("inactive");
+  fahrenheit.classList.remove("active");
+  fahrenheit.classList.add("inactive");
+  document.querySelector("#units-wind").innerHTML = `km/h`;
 }
+
+let celsiusTemperature = null;
+let windSpeed = null;
 
 function weatherPosition(position) {
   let latitude = position.coords.latitude;
@@ -79,8 +93,6 @@ function displayOnLoad (city) {
   axios.get(apiCityUrl).then(displayCityTemp);
 }
 
-displayOnLoad("Paris");
-
 function chosenCity(event) {
   event.preventDefault();
   let city = document.querySelector("#select-city").value;
@@ -88,3 +100,5 @@ function chosenCity(event) {
 }
 let cityForm = document.querySelector("#submit-city");
 cityForm.addEventListener("submit", chosenCity);
+
+displayOnLoad("Montevideo");
