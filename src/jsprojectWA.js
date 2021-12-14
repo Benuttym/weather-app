@@ -24,7 +24,8 @@ function formatDate (timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayforecast () {
+function displayForecast (response) {
+  console.log(response);
   let forecastElement = document.querySelector("#days-after");
   let forecastHTML = ``;
   let days = ["Monday", "Tuesday", "Wenesday", "Thursday", "Friday"];
@@ -47,36 +48,17 @@ function displayforecast () {
       <img src="#" alt="icon" class="iconday1" width="80px"></i>
         </div>
       </div>
-    </div>`;  
-  })
+    </div>`
+  });
   forecastElement.innerHTML = forecastHTML;
 }
 
-function temperatureCelsius (event) {
-  event.preventDefault();
-  celsius.classList.add("active");
-  celsius.classList.remove("inactive");
-  fahrenheit.classList.remove("active");
-  fahrenheit.classList.add("inactive");
-  document.querySelector("#current-temperature").innerHTML = Math.round(celsiusTemperature);
-  document.querySelector("#current-wind").innerHTML = Math.round(windSpeed);
-  document.querySelector("#units-wind").innerHTML = `km/h`;
-};
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", temperatureCelsius);
-
-function temperatureFahrenheit (event) {
-  event.preventDefault();
-  celsius.classList.remove("active");
-  celsius.classList.add("inactive");
-  fahrenheit.classList.add("active");
-  fahrenheit.classList.remove("inactive");
-  document.querySelector("#current-temperature").innerHTML = Math.round((celsiusTemperature * 9) / 5) + 32;
-  document.querySelector("#current-wind").innerHTML = Math.round(windSpeed * 0.621371);
-  document.querySelector("#units-wind").innerHTML = `mph`;
-};
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", temperatureFahrenheit);
+function getForecast(coordinates) {
+  let units = "metric";
+  let apiKey = "764c6412bfddc7086225316d08eb93d8";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${units}&appid=${apiKey}`;
+  axios.get(apiURL).then(displayForecast);
+}
 
 function displayCityTemp(response) {
   document.querySelector("#current-temperature").innerHTML = Math.round(response.data.main.temp);
@@ -94,6 +76,8 @@ function displayCityTemp(response) {
   fahrenheit.classList.remove("active");
   fahrenheit.classList.add("inactive");
   document.querySelector("#units-wind").innerHTML = `km/h`;
+
+  getForecast(response.data.coord);
 }
 
 let celsiusTemperature = null;
@@ -129,5 +113,31 @@ function chosenCity(event) {
 let cityForm = document.querySelector("#submit-city");
 cityForm.addEventListener("submit", chosenCity);
 
-displayforecast();
+displayForecast();
 displayOnLoad("Montevideo");
+
+function temperatureCelsius (event) {
+  event.preventDefault();
+  celsius.classList.add("active");
+  celsius.classList.remove("inactive");
+  fahrenheit.classList.remove("active");
+  fahrenheit.classList.add("inactive");
+  document.querySelector("#current-temperature").innerHTML = Math.round(celsiusTemperature);
+  document.querySelector("#current-wind").innerHTML = Math.round(windSpeed);
+  document.querySelector("#units-wind").innerHTML = `km/h`;
+};
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", temperatureCelsius);
+
+function temperatureFahrenheit (event) {
+  event.preventDefault();
+  celsius.classList.remove("active");
+  celsius.classList.add("inactive");
+  fahrenheit.classList.add("active");
+  fahrenheit.classList.remove("inactive");
+  document.querySelector("#current-temperature").innerHTML = Math.round((celsiusTemperature * 9) / 5) + 32;
+  document.querySelector("#current-wind").innerHTML = Math.round(windSpeed * 0.621371);
+  document.querySelector("#units-wind").innerHTML = `mph`;
+};
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", temperatureFahrenheit);
