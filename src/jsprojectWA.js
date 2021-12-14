@@ -24,6 +24,34 @@ function formatDate (timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayforecast () {
+  let forecastElement = document.querySelector("#days-after");
+  let forecastHTML = ``;
+  let days = ["Monday", "Tuesday", "Wenesday", "Thursday", "Friday"];
+  days.forEach(function (day) {
+    forecastHTML = forecastHTML + `
+    <div class="forecast">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-9" style="padding-left: 20px;">
+      <span class="nameday">${day}</span> | <span id="temperatures-max">0°C</span> - <span id="temperatures-min">0°C</span>
+      <br />
+      <div class="infosdaysafter">
+      Precipitation: <span id="precipitation-day">0</span>%
+      <br />
+      Humidity: <span id="humidity-day">0</span>%
+      <br />
+      Wind: <span id="wind-day">0</span> <span id="units-wind">km/h</span>
+      </div>
+        </div>
+        <div class="col col-lg-3" style="text-align: right; margin: auto;">
+      <img src="#" alt="icon" class="iconday1" width="80px"></i>
+        </div>
+      </div>
+    </div>`;  
+  })
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function temperatureCelsius (event) {
   event.preventDefault();
   celsius.classList.add("active");
@@ -101,4 +129,5 @@ function chosenCity(event) {
 let cityForm = document.querySelector("#submit-city");
 cityForm.addEventListener("submit", chosenCity);
 
+displayforecast();
 displayOnLoad("Montevideo");

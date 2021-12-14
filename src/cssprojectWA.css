@@ -98,22 +98,20 @@ h2 {
   margin-bottom: 20px;
   width: 90%;
 }
-.nameday1, .nameday2, .nameday3, .nameday4, .nameday5 {
+.nameday {
   font-size: 19px;
 }
-.day1, .day2, .day3, .day4, .day5 {
+.forecast {
   padding-left: 20px;
   background-color: #EBEBEB;
   padding: 8px;
   border: 1px dashed #02588d;
   border-radius: 20px;
+  margin-bottom: 10px; 
   box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12);
   transition: all 250ms ease-in-out;
 }
-.day1, .day2, .day3, .day4 {
-  margin-bottom: 10px; 
-}
-.day1:hover, .day2:hover, .day3:hover, .day4:hover, .day5:hover {
+.forecast:hover {
   background-color: #267296;
 }
 .infosdaysafter {
