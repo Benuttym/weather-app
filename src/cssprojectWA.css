@@ -5,6 +5,7 @@ body {
   background-color: #ffffff;
 }
 .wrapper {
+  color: #0a2b3a;
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -13,8 +14,8 @@ body {
   width: 50%;
   border: 1px solid #4c738b;
   border-radius: 30px;
-  background-color: #2794b8;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12);
+  background-color: #4182a0;
+  box-shadow: 0px 0px 10px 0px #0000001f;
 }
 .heading{
   display: block;
@@ -22,16 +23,16 @@ body {
   text-align: center;
 }
 #select-city {
-  background-color: #EBEBEB;
-  border: 1.5px solid #02588d;
+  background-color: #dddddd;
+  border: 1.5px solid #295f7a;
   border-radius: 30px;
   padding: 1px 7px 2px 7px;
   transition: all 200ms ease-in-out;   
 }
 .go, .currentlocation {
-  background-color: #02588d;
+  background-color: #267296;
   color: #EBEBEB;
-  border: 1.5px solid #02588d;
+  border: 1.4px solid #295f7a;
   border-radius: 30px;
   padding: 1px 7px 2px 7px;
   transition: all 250ms ease-in-out;
@@ -73,14 +74,14 @@ h2 {
   font-weight: normal;
 }
 .digit .inactive {
-  color: white;
+  color: #ffffff;
 }
 .digit .inactive:hover {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
 }
 .digit .active {
-  color: black;
+  color: #0a2b3a;
   cursor: default;
   text-decoration: none;
 }
@@ -102,17 +103,18 @@ h2 {
   font-size: 19px;
 }
 .forecast {
+  color: #dddddd;
   padding-left: 20px;
   background-color: #267296;
   padding: 8px;
   border: 1px dashed #02588d;
   border-radius: 20px;
   margin-bottom: 10px; 
-  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 0px 8px 0px #0000001f;
   transition: all 250ms ease-in-out;
 }
 .forecast:hover {
-  background-color: #267296;
+  background-color: #c5a849;
 }
 .infosdaysafter {
   font-size: 13px;

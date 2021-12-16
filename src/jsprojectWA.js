@@ -77,11 +77,12 @@ function displayForecast (response) {
       <div class="row justify-content-md-center">
         <div class="col col-lg-9" style="padding-left: 20px;">
       <span class="nameday">${formatForecastDate(forecastDay.dt * 1000)}</span> | 
-      <span id="temperatures-min">${Math.round(forecastDay.temp.min)}°C</span> - 
-      <span id="temperatures-max">${Math.round(forecastDay.temp.max)}°C</span>
+      <span id="temperatures-min">${Math.round(forecastDay.temp.min)}</span>°C - 
+      <span id="temperatures-max">${Math.round(forecastDay.temp.max)}</span>°C
       <br />
       <div class="infosdaysafter">
-      Precipitation: <span id="precipitation-day">${Math.round(forecastDay.rain)}</span>%
+      Precipitation: <span id="precipitation-day">
+      ${Math.round(forecastDay.rain)}</span>%
       <br />
       Humidity: <span id="humidity-day">${Math.round(forecastDay.humidity)}</span>%
       <br />
@@ -153,5 +154,5 @@ function getCurrentPosition() {
 let getCurrentPositionButton = document.querySelector("#location-button");
 getCurrentPositionButton.addEventListener("click", getCurrentPosition);
 
-displayOnLoad("Montevideo");
+displayOnLoad("Paris");
 displayForecast();
