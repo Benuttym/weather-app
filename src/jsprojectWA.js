@@ -25,7 +25,7 @@ function formatDate (timestamp) {
 }
 
 function displayForecast (response) {
-  console.log(response);
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#days-after");
   let forecastHTML = ``;
   let days = ["Monday", "Tuesday", "Wenesday", "Thursday", "Friday"];
@@ -113,9 +113,6 @@ function chosenCity(event) {
 let cityForm = document.querySelector("#submit-city");
 cityForm.addEventListener("submit", chosenCity);
 
-displayForecast();
-displayOnLoad("Montevideo");
-
 function temperatureCelsius (event) {
   event.preventDefault();
   celsius.classList.add("active");
@@ -141,3 +138,6 @@ function temperatureFahrenheit (event) {
 };
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", temperatureFahrenheit);
+
+displayOnLoad("Montevideo");
+displayForecast();
