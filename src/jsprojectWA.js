@@ -71,7 +71,7 @@ function displayForecast (response) {
   let forecast = response.data.daily;
   let forecastHTML = ``;
   forecast.forEach(function (forecastDay, index) {
-    if (index >= 1 && index <= 6) {
+    if (index >= 1 && index <= 6 && forecastDay.rain > 0) {
     forecastHTML = forecastHTML + `
     <div class="forecast">
       <div class="row justify-content-md-center">
@@ -81,8 +81,7 @@ function displayForecast (response) {
       <span id="temperatures-max">${Math.round(forecastDay.temp.max)}</span>°C
       <br />
       <div class="infosdaysafter">
-      Precipitation: <span id="precipitation-day">
-      ${Math.round(forecastDay.rain)}</span>%
+      Precipitation: <span id="precipitation-day">${Math.round(forecastDay.rain)}</span>%
       <br />
       Humidity: <span id="humidity-day">${Math.round(forecastDay.humidity)}</span>%
       <br />
@@ -90,7 +89,29 @@ function displayForecast (response) {
       </div>
         </div>
         <div class="col col-lg-3" style="text-align: right; margin: auto;">
-      <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="icon" class="iconday1" width="80px"></i>
+      <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="icon" class="iconday1" width="80px"></img>
+        </div>
+      </div>
+    </div>`
+  } else {
+    forecastHTML = forecastHTML + `
+    <div class="forecast">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-9" style="padding-left: 20px;">
+      <span class="nameday">${formatForecastDate(forecastDay.dt * 1000)}</span> | 
+      <span id="temperatures-min">${Math.round(forecastDay.temp.min)}</span>°C - 
+      <span id="temperatures-max">${Math.round(forecastDay.temp.max)}</span>°C
+      <br />
+      <div class="infosdaysafter">
+      Precipitation: <span id="precipitation-day">0</span>%
+      <br />
+      Humidity: <span id="humidity-day">${Math.round(forecastDay.humidity)}</span>%
+      <br />
+      Wind: <span id="wind-day">${Math.round(forecastDay.wind_speed)}</span> <span id="units-wind">km/h</span>
+      </div>
+        </div>
+        <div class="col col-lg-3" style="text-align: right; margin: auto;">
+      <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="icon" class="iconday1" width="80px"></img>
         </div>
       </div>
     </div>`
@@ -101,7 +122,6 @@ function displayForecast (response) {
 function displayCityTemp(response) {
   document.querySelector("#current-temperature").innerHTML = Math.round(response.data.main.temp);
   document.querySelector("#city").innerHTML = response.data.name;
-  let precipitation = document.querySelector("#current-precipitation");
   document.querySelector("#current-humidity").innerHTML = Math.round(response.data.main.humidity);
   document.querySelector("#current-wind").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#current-visibility").innerHTML = response.data.weather[0].main;
