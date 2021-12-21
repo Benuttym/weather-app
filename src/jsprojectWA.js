@@ -70,7 +70,7 @@ function displayForecast (response) {
   let forecast = response.data.daily;
   let forecastHTML = ``;
   forecast.forEach(function (forecastDay, index) {
-    if (index >= 1 && index <= 6 && forecastDay.rain > 0) {
+    if (forecastDay.rain > 0 && index >= 1 && index <= 6) {
     forecastHTML = forecastHTML + `
     <div class="forecast">
       <div class="row justify-content-md-center">
@@ -92,7 +92,7 @@ function displayForecast (response) {
         </div>
       </div>
     </div>`
-  } else {
+  } else if (index >= 1 && index <= 6) {
     forecastHTML = forecastHTML + `
     <div class="forecast">
       <div class="row justify-content-md-center">
