@@ -67,7 +67,6 @@ let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", temperatureFahrenheit);
 
 function displayForecast (response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastHTML = ``;
   forecast.forEach(function (forecastDay, index) {
@@ -77,7 +76,7 @@ function displayForecast (response) {
       <div class="row justify-content-md-center">
         <div class="col col-lg-9" style="padding-left: 20px;">
       <span class="nameday">${formatForecastDate(forecastDay.dt * 1000)}</span> | 
-      <span id="temperatures-min">${Math.round(forecastDay.temp.min)}</span>°C - 
+      <span id="temperatures-min">${Math.round(forecastDay.temp.min)}</span>°C to 
       <span id="temperatures-max">${Math.round(forecastDay.temp.max)}</span>°C
       <br />
       <div class="infosdaysafter">
@@ -99,7 +98,7 @@ function displayForecast (response) {
       <div class="row justify-content-md-center">
         <div class="col col-lg-9" style="padding-left: 20px;">
       <span class="nameday">${formatForecastDate(forecastDay.dt * 1000)}</span> | 
-      <span id="temperatures-min">${Math.round(forecastDay.temp.min)}</span>°C - 
+      <span id="temperatures-min">${Math.round(forecastDay.temp.min)}</span>°C to 
       <span id="temperatures-max">${Math.round(forecastDay.temp.max)}</span>°C
       <br />
       <div class="infosdaysafter">
